@@ -29,7 +29,7 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
   let name = variables.name ? `${variables.name}` : "Name";
-  let lastname = variables.lastname ? `${variables.lastname}` : "LastName";
+  let lastname = variables.lastname ? `${variables.lastname}` : "Lastname";
   let redesPosition =
     variables.socialMediaPosition == "position-right"
       ? `position-right`
@@ -37,6 +37,7 @@ function render(variables = {}) {
   let role = variables.role ? `${variables.role}` : "Role";
   let city = variables.city ? `${variables.city}` : "City";
   let country = variables.country ? `${variables.country}` : "Country";
+  let instagram = variables.instagram ? `${variables.instagram}` : "null";
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
           ${cover}
@@ -48,7 +49,7 @@ function render(variables = {}) {
             <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
             <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+            <li class="${instagram}"><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -78,7 +79,8 @@ window.onload = function() {
     lastname: null,
     role: null,
     country: null,
-    city: null
+    city: null,
+    email: null
   };
   render(window.variables); //render the card for the first time
 
