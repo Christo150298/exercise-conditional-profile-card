@@ -37,19 +37,30 @@ function render(variables = {}) {
   let role = variables.role ? `${variables.role}` : "Role";
   let city = variables.city ? `${variables.city}` : "City";
   let country = variables.country ? `${variables.country}` : "Country";
-  let instagram = variables.instagram ? `${variables.instagram}` : "null";
+  let instagram = variables.instagram
+    ? `<li><a href="https://instagram.com/${variables.instagram}"><i class="fab fa-instagram"></i></a></li>`
+    : "";
+  let twitter = variables.twitter
+    ? `<li><a href="https://twitter.com/${variables.twitter}"><i class="fab fa-twitter"></i></a></li>`
+    : "";
+  let github = variables.github
+    ? `<li><a href="https://github.com/${variables.github}"><i class="fab fa-github"></i></a></li>`
+    : "";
+  let linkedin = variables.linkedin
+    ? `<li><a href="https://linkedin.com/${variables.linkedin}"><i class="fab fa-linkedin"></i></a></li>`
+    : "";
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
           ${cover}
           <img src="${variables.avatarURL}" class="photo" />
           <h1>${name} ${lastname}</h1>
           <h2>${role}</h2>
-          <h3>${city} ${country}</h3>
+          <h3>${city} , ${country}</h3>
           <ul class="${redesPosition}">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li class="${instagram}"><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+            ${twitter}
+            ${github}
+            ${linkedin}
+            ${instagram}
           </ul>
         </div>
     `;
@@ -72,15 +83,14 @@ window.onload = function() {
     socialMediaPosition: "position-left",
     // social media usernames
     twitter: null,
-    github: "alesanchezr",
+    github: null,
     linkedin: null,
     instagram: null,
     name: null,
     lastname: null,
     role: null,
     country: null,
-    city: null,
-    email: null
+    city: null
   };
   render(window.variables); //render the card for the first time
 
